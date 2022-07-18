@@ -53,7 +53,7 @@ impl Player {
         if self.y < 0.0 {
             self.y = 0.0;
         }
-        self.x += 4; // Control the game speed
+        self.x += 2; // Control the game speed
         self.frame += 1;
         self.frame = self.frame % 6;
     }
@@ -75,7 +75,7 @@ impl Obstacle {
         Obstacle {
             x,
             gap_y: random.range(10, 40),
-            size: i32::max(4, 20 - score),
+            size: i32::max(2, 20 - score),
         }
     }
 
@@ -139,7 +139,7 @@ impl State {
 
         self.obstacle.render(ctx, self.player.x as i32);
         if self.player.x > self.obstacle.x {
-            self.score += 100;
+            self.score += 1;
             self.obstacle = Obstacle::new(self.player.x + SCREEN_WIDTH, self.score);
         }
 
